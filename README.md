@@ -42,6 +42,22 @@ In Ruby this is much cleaner:
 # > 1
 # > 2
 ```
+I can also do
+
+```ruby
+3.times do |i|
+  puts i
+end
+```
+
+I can also use
+
+```ruby
+3.upto(6) do |i|
+  puts i
+end
+```
+
 
 `times` is a method that takes a _block_.  A block is just a chunk of code that may or may not take arguments.  The closest thing to a block in ES6-land would be an (anonymous) arrow function.
 
@@ -153,12 +169,15 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  names.each { |name| "Hello #{name}!" }
+
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each { |num| puts "#{num**2}" }
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -167,6 +186,7 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  fahrenheit_temps.each { |num| puts "#{(num - 32) * 0.5556}C" }
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -174,6 +194,8 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+  artists.each { |names| ninja_turtles = artists }
+  puts ninja_turtles
   ```
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
@@ -217,7 +239,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+cart.each didn't modify the original data while cart.map did
 ```
 
 #### Explore 2
@@ -239,7 +261,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+result is same but in the first snippet an empty array was defined and cart elements were added to it using a loop whilst in the second snippet the modified array was directly assigned to uppercase variable 
 ```
 
 #### Explore 3: Bang
@@ -257,7 +279,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+The `!` symbol is called a dangerous method because it indicates that the method will modify the object it's called on.
 ```
 
 ```rb
@@ -269,7 +291,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+.map doesn't modify the object it's called on while map! does.
 ```
 
 ### Exercise: Practice Map (15 minutes)
@@ -280,7 +302,8 @@ Use `map` to do the following...
 
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
-
+  duck = first_names.map{|name| "#{name} Duck" }
+  puts duck
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -288,7 +311,8 @@ Use `map` to do the following...
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
-
+  squared = numbers.map{|num| "#{num**2}" }
+  puts squared
   # => [1, 9, 81, 121, 10000]
   ```
 
@@ -298,6 +322,7 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
-
+  celsius = fahrenheit_temps.map { |num| "#{(num - 32) * 0.5556}C" }
+  puts celsius
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
