@@ -154,12 +154,22 @@ Use `each` to do the following...
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
   ```
-
+  names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+  
+  names.each do |num|
+  "Hello #{names} !"
+  end
+  
+  
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
   ```
+  numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.each do |num|
+  "#{num *2} "
+  end
 
 - Print out the Celsius values for an array containing Fahrenheit values.
 
@@ -175,6 +185,9 @@ Use `each` to do the following...
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
   ```
+  
+  ninja_turtles=artists
+  p ninja_turtles
 
 - **Bonus:** Print out every possible combination of the below ice cream flavors and toppings.
 
@@ -182,6 +195,8 @@ Use `each` to do the following...
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
   ```
+  
+  flavors+toppings
 <details>
   <summary>
     Hint
@@ -217,7 +232,9 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+all the output are in uppercase but
+difference is the 1st by using each array is print it
+but the 2nd whish is map create new array which is still upper case
 ```
 
 #### Explore 2
@@ -239,7 +256,9 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+all the output are in uppercase but
+difference is the 1st by using each array is print it
+but the 2nd whish is map create new array which is still upper case
 ```
 
 #### Explore 3: Bang
@@ -257,6 +276,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
+.map! change the origin var  but .map dosnot effect in acual var
 
 ```
 
@@ -269,6 +289,8 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
+```
+.map! change the origin var  but .map dosnot effect in acual var
 
 ```
 
@@ -283,7 +305,11 @@ Use `map` to do the following...
 
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
-
+  first_names = [ "Donald", "Daisy", "Daffy" ]
+  
+  first_names .map do |num|
+  " #{num} Duck!"
+  end
 2. Create an array containing the squared values of every number in this array.
 
   ```ruby
@@ -291,7 +317,10 @@ Use `map` to do the following...
 
   # => [1, 9, 81, 121, 10000]
   ```
-
+  numbers = [ 1, 3, 9, 11, 100 ]
+  numbers.map do |num|
+  "#{num *2} "
+  end
 3. Create an array with the Celsius values for these Fahrenheit values.
 
   > Hint: `C = (F - 32) * (5 / 9)`
